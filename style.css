@@ -70,8 +70,9 @@ h1 {
 }
 
 .menu-display {
-    height: 100px; /* Fixed height for the display area */
+    min-height: 250px; /* Adjusted height for potential image */
     display: flex;
+    flex-direction: column; /* Stack text and image */
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
@@ -82,6 +83,14 @@ h1 {
 
 .menu-result {
     animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    animation: popIn 0.5s ease;
 }
 
 .thinking {

@@ -21,6 +21,8 @@ const dinnerMenus = [
     'Gyoza 🥟',
 ];
 
+const hamburgerImageUrl = 'https://media.istockphoto.com/id/182744943/photo/burger.jpg?s=1024x1024&w=is&k=20&c=ITKQIm9gn1H-DZ8FUzawukQdAXUsbsU4-_npC2rGUos=';
+
 // Function to set theme
 const setTheme = (theme) => {
     htmlElement.setAttribute('data-theme', theme);
@@ -56,11 +58,20 @@ recommendButton.addEventListener('click', () => {
         const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
         const recommendedMenu = dinnerMenus[randomIndex];
         
-        const result = document.createElement('span');
-        result.className = 'menu-result';
-        result.textContent = recommendedMenu;
+        const resultText = document.createElement('span');
+        resultText.className = 'menu-result';
+        resultText.textContent = recommendedMenu;
 
         menuDisplay.innerHTML = ''; // Clear "thinking"
-        menuDisplay.appendChild(result);
+        menuDisplay.appendChild(resultText);
+
+        // If hamburger is chosen, add the image
+        if (recommendedMenu === 'Hamburger 🍔') {
+            const image = document.createElement('img');
+            image.src = hamburgerImageUrl;
+            image.className = 'menu-image';
+            menuDisplay.appendChild(image);
+        }
+
     }, 500); // 0.5 second delay
 });
