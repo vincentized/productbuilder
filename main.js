@@ -1,5 +1,28 @@
 const drawButton = document.getElementById('draw-button');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const themeToggleButton = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Function to set theme
+const setTheme = (theme) => {
+    htmlElement.setAttribute('data-theme', theme);
+    themeToggleButton.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    localStorage.setItem('theme', theme);
+};
+
+// Load saved theme from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+});
+
+// Theme toggle button event listener
+themeToggleButton.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+
 
 drawButton.addEventListener('click', () => {
     drawButton.disabled = true;
