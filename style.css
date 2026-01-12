@@ -4,7 +4,7 @@
     --bg-color: #2c3e50;
     --text-color: #ecf0f1;
     --container-bg: rgba(0, 0, 0, 0.2);
-    --button-bg: #e67e22; /* New button color */
+    --button-bg: #e67e22;
     --button-hover-bg: #d35400;
 }
 
@@ -70,30 +70,33 @@ h1 {
 }
 
 .menu-display {
-    min-height: 250px; /* Adjusted height for potential image */
+    min-height: 300px; /* Adjusted height for text and image */
     display: flex;
-    flex-direction: column; /* Stack text and image */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
-    font-size: 2.8rem;
-    font-weight: 800;
     color: var(--button-bg);
 }
 
 .menu-result {
+    font-size: 2.8rem;
+    font-weight: 800;
     animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .menu-image {
-    max-width: 80%;
-    height: auto;
+    width: 90%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* This crops the image to fit without distortion */
     border-radius: 10px;
     margin-top: 20px;
     animation: popIn 0.5s ease;
 }
 
 .thinking {
+    font-size: 2.8rem;
+    font-weight: 800;
     animation: blink 0.5s infinite alternate;
 }
 
