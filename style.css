@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap');
+
+:root {
+    --bg-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --button-bg: #3498db;
+    --button-hover-bg: #2980b9;
+    --ball-size: 60px;
+}
+
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.lotto-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    min-height: var(--ball-size);
+}
+
+.ball {
+    width: var(--ball-size);
+    height: var(--ball-size);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.4);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+}
+
+@keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+#draw-button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#draw-button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+#draw-button:active {
+    transform: translateY(1px);
+}
+
+#draw-button:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+}
