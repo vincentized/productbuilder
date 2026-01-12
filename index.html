@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinner Menu Recommender</title>
+    <title>What's for Dinner Tonight?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <button id="theme-toggle">Light Mode</button>
-        <h1>What's for Dinner?</h1>
-        <div id="menu-display" class="menu-display">
-            <!-- Recommendation will be shown here -->
+        <h1>What's for Dinner Tonight?</h1>
+        <div id="dinner-recommendation" class="dinner-recommendation">
+            <p>Press the button below to get a dinner recommendation!</p>
         </div>
         <button id="recommend-button">Get Recommendation</button>
+    </div>
 
-        <hr style="margin: 40px 0; border-color: rgba(255,255,255,0.2);">
-
-        <h2>Affiliation Inquiry</h2>
-        <form action="https://formspree.io/f/xdaaokwj" method="POST" id="affiliation-form">
+    <div class="container" id="contact-form">
+        <h2>Partnership Inquiry</h2>
+        <form action="https://formspree.io/f/xdaaokwj" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="_replyto" required>
             </div>
             <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea id="message" name="message" rows="4" required></textarea>
             </div>
-            <button type="submit" id="form-submit-button">Send Inquiry</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 
+    <!-- Disqus Comment Section -->
+    <div class="container" id="disqus_container">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+    </div>
+    <!-- End Disqus Comment Section -->
+
     <script src="main.js"></script>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://YOUR_DISQUS_SHORTNAME.disqus.com/embed.js'; // REPLACE 'YOUR_DISQUS_SHORTNAME' with your actual shortname
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>

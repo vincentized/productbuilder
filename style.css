@@ -1,187 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap');
-
-:root {
-    --bg-color: #2c3e50;
-    --text-color: #ecf0f1;
-    --container-bg: rgba(0, 0, 0, 0.2);
-    --button-bg: #e67e22;
-    --button-hover-bg: #d35400;
-    --form-input-bg: rgba(255, 255, 255, 0.1);
-    --form-input-border: rgba(255, 255, 255, 0.3);
-}
-
-[data-theme='light'] {
-    --bg-color: #ecf0f1;
-    --text-color: #2c3e50;
-    --container-bg: rgba(255, 255, 255, 0.8);
-    --form-input-bg: rgba(0, 0, 0, 0.05);
-    --form-input-border: rgba(0, 0, 0, 0.2);
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 body {
-    font-family: 'Nanum Gothic', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
     margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
     text-align: center;
-    background: var(--container-bg);
-    padding: 50px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 1s ease-in-out;
-    position: relative;
-    width: auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
     max-width: 500px;
-}
-
-#theme-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: 2px solid var(--text-color);
-    color: var(--text-color);
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#theme-toggle:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-}
-
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 h2 {
-    font-size: 1.8rem;
-    margin-top: 40px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
     margin-bottom: 20px;
-    color: var(--text-color);
 }
 
-.menu-display {
-    min-height: 300px;
+.dinner-recommendation {
+    min-height: 100px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
-    color: var(--button-bg);
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    border: 1px dashed #ddd;
 }
 
-.menu-result {
-    font-size: 2.8rem;
-    font-weight: 800;
-    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+.dinner-recommendation p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 700;
 }
 
-.menu-image {
-    width: 90%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 20px;
-    animation: popIn 0.5s ease;
-}
-
-.thinking {
-    font-size: 2.8rem;
-    font-weight: 800;
-    animation: blink 0.5s infinite alternate;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes blink {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
-}
-
-#recommend-button, #form-submit-button {
-    background-color: var(--button-bg);
+#recommend-button, #contact-form button {
+    background-color: #ff6347;
     color: #fff;
     border: none;
-    padding: 15px 40px;
-    font-size: 1.3rem;
-    font-family: 'Nanum Gothic', sans-serif;
-    font-weight: 700;
-    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
-#recommend-button:hover, #form-submit-button:hover {
-    background-color: var(--button-hover-bg);
-    transform: translateY(-2px);
+#recommend-button:hover, #contact-form button:hover {
+    background-color: #e5533d;
 }
 
-#recommend-button:active, #form-submit-button:active {
-    transform: translateY(1px);
-}
-
-/* Form styles */
-#affiliation-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 30px;
+#contact-form {
     text-align: left;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .form-group label {
-    margin-bottom: 8px;
+    display: block;
+    margin-bottom: 5px;
     font-weight: 700;
-    font-size: 1.1rem;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
+.form-group input,
 .form-group textarea {
-    padding: 12px;
-    border: 1px solid var(--form-input-border);
-    border-radius: 8px;
-    background-color: var(--form-input-bg);
-    color: var(--text-color);
-    font-family: 'Nanum Gothic', sans-serif;
-    font-size: 1rem;
-    transition: border-color 0.3s, background-color 0.3s;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group textarea:focus {
-    border-color: var(--button-bg);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+#contact-form button {
+    width: 100%;
+    padding: 12px;
+}
+
+/* Disqus specific styles */
+#disqus_container {
+    text-align: left;
+}
+
+#disqus_thread {
+    margin-top: 20px;
 }
