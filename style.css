@@ -4,9 +4,8 @@
     --bg-color: #2c3e50;
     --text-color: #ecf0f1;
     --container-bg: rgba(0, 0, 0, 0.2);
-    --button-bg: #3498db;
-    --button-hover-bg: #2980b9;
-    --ball-size: 50px; /* Adjusted ball size for multiple sets */
+    --button-bg: #e67e22; /* New button color */
+    --button-hover-bg: #d35400;
 }
 
 [data-theme='light'] {
@@ -23,7 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px 0;
+    padding: 20px;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -31,12 +30,13 @@ body {
 .container {
     text-align: center;
     background: var(--container-bg);
-    padding: 40px;
+    padding: 50px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
     position: relative;
     width: auto;
+    max-width: 500px;
 }
 
 #theme-toggle {
@@ -64,52 +64,46 @@ body {
 }
 
 h1 {
-    font-size: 2.2rem; /* Adjusted font size */
+    font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-.lotto-numbers {
-    display: flex;
-    flex-direction: column; /* Stack sets vertically */
-    gap: 15px;
-    margin-bottom: 40px;
-    min-height: calc(5 * (var(--ball-size) + 15px)); /* Approximate height for 5 sets */
-}
-
-.lotto-set {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.ball {
-    width: var(--ball-size);
-    height: var(--ball-size);
-    border-radius: 50%;
+.menu-display {
+    height: 100px; /* Fixed height for the display area */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem; /* Adjusted font size */
-    font-weight: 700;
-    color: #fff;
-    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.4);
-    animation: popIn 0.5s ease;
-    transform-origin: center;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--button-bg);
+}
+
+.menu-result {
+    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.thinking {
+    animation: blink 0.5s infinite alternate;
 }
 
 @keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
+    from { transform: scale(0.5); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
-#draw-button {
+@keyframes blink {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+#recommend-button {
     background-color: var(--button-bg);
     color: #fff;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 15px 40px;
+    font-size: 1.3rem;
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: 700;
     border-radius: 10px;
@@ -118,16 +112,11 @@ h1 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-#draw-button:hover {
+#recommend-button:hover {
     background-color: var(--button-hover-bg);
     transform: translateY(-2px);
 }
 
-#draw-button:active {
+#recommend-button:active {
     transform: translateY(1px);
-}
-
-#draw-button:disabled {
-    background-color: #7f8c8d;
-    cursor: not-allowed;
 }

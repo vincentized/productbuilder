@@ -1,7 +1,25 @@
-const drawButton = document.getElementById('draw-button');
-const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const recommendButton = document.getElementById('recommend-button');
+const menuDisplay = document.getElementById('menu-display');
 const themeToggleButton = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
+
+const dinnerMenus = [
+    'Pizza 🍕',
+    'Sushi 🍣',
+    'Pasta 🍝',
+    'Tacos 🌮',
+    'Bibimbap 🍚',
+    'Steak 🥩',
+    'Fried Chicken 🍗',
+    'Hamburger 🍔',
+    'Curry 🍛',
+    'Ramen 🍜',
+    'Pho 🍲',
+    'Salad 🥗',
+    'Kimchi Jjigae 🇰🇷',
+    'Pad Thai 🇹🇭',
+    'Gyoza 🥟',
+];
 
 // Function to set theme
 const setTheme = (theme) => {
@@ -14,6 +32,7 @@ const setTheme = (theme) => {
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
+    menuDisplay.innerHTML = '<span>Click the button!</span>';
 });
 
 // Theme toggle button event listener
@@ -23,45 +42,25 @@ themeToggleButton.addEventListener('click', () => {
     setTheme(newTheme);
 });
 
-// Draw button event listener
-drawButton.addEventListener('click', () => {
-    lottoNumbersContainer.innerHTML = ''; // Clear previous numbers
-
-    for (let i = 0; i < 5; i++) {
-        const numberSet = generateUniqueNumbers();
-        const setContainer = document.createElement('div');
-        setContainer.className = 'lotto-set';
+// Recommendation button event listener
+recommendButton.addEventListener('click', () => {
+    menuDisplay.innerHTML = ''; // Clear previous
+    
+    // Simple "thinking" animation
+    const thinking = document.createElement('span');
+    thinking.className = 'thinking';
+    thinking.textContent = '...';
+    menuDisplay.appendChild(thinking);
+    
+    setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+        const recommendedMenu = dinnerMenus[randomIndex];
         
-        numberSet.forEach(number => {
-            const ball = createBall(number);
-            setContainer.appendChild(ball);
-        });
+        const result = document.createElement('span');
+        result.className = 'menu-result';
+        result.textContent = recommendedMenu;
 
-        lottoNumbersContainer.appendChild(setContainer);
-    }
+        menuDisplay.innerHTML = ''; // Clear "thinking"
+        menuDisplay.appendChild(result);
+    }, 500); // 0.5 second delay
 });
-
-function generateUniqueNumbers() {
-    const numbers = new Set();
-    while (numbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * 45) + 1;
-        numbers.add(randomNumber);
-    }
-    return Array.from(numbers).sort((a, b) => a - b);
-}
-
-function createBall(number) {
-    const ball = document.createElement('div');
-    ball.className = 'ball';
-    ball.textContent = number;
-    ball.style.backgroundColor = getBallColor(number);
-    return ball;
-}
-
-function getBallColor(number) {
-    if (number <= 10) return '#f1c40f'; // Yellow
-    if (number <= 20) return '#3498db'; // Blue
-    if (number <= 30) return '#e74c3c'; // Red
-    if (number <= 40) return '#9b59b6'; // Purple
-    return '#2ecc71'; // Green
-}
