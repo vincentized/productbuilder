@@ -23,23 +23,22 @@ themeToggleButton.addEventListener('click', () => {
     setTheme(newTheme);
 });
 
-
+// Draw button event listener
 drawButton.addEventListener('click', () => {
-    drawButton.disabled = true;
-    lottoNumbersContainer.innerHTML = '';
-    
-    const numbers = generateUniqueNumbers();
-    
-    numbers.forEach((number, index) => {
-        setTimeout(() => {
-            const ball = createBall(number);
-            lottoNumbersContainer.appendChild(ball);
-        }, index * 400);
-    });
+    lottoNumbersContainer.innerHTML = ''; // Clear previous numbers
 
-    setTimeout(() => {
-        drawButton.disabled = false;
-    }, numbers.length * 400);
+    for (let i = 0; i < 5; i++) {
+        const numberSet = generateUniqueNumbers();
+        const setContainer = document.createElement('div');
+        setContainer.className = 'lotto-set';
+        
+        numberSet.forEach(number => {
+            const ball = createBall(number);
+            setContainer.appendChild(ball);
+        });
+
+        lottoNumbersContainer.appendChild(setContainer);
+    }
 });
 
 function generateUniqueNumbers() {
