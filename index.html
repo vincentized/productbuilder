@@ -14,6 +14,25 @@
             <!-- Recommendation will be shown here -->
         </div>
         <button id="recommend-button">Get Recommendation</button>
+
+        <hr style="margin: 40px 0; border-color: rgba(255,255,255,0.2);">
+
+        <h2>Affiliation Inquiry</h2>
+        <form action="https://formspree.io/f/xdaaokwj" method="POST" id="affiliation-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" id="form-submit-button">Send Inquiry</button>
+        </form>
     </div>
 
     <script src="main.js"></script>
